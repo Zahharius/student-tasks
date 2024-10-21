@@ -11,6 +11,7 @@
 ## Выбранные технологии
 - Sequalize
 - Node
+- (список технологий будет дополнятся во время разработки)
 
 ## Диаграмма базы данных
 ![image](https://github.com/user-attachments/assets/867f61c8-02f2-4388-8e86-bfeb224df9a4)
