@@ -1,16 +1,17 @@
 module.exports = app => {
     const tasks = require('../controllers/taskController')
-    const categories = require('../controllers/taskController')
     const router = require('express').Router()
+
+    router.get('/search', tasks.search) // http://localhost:3000/tasks/search?description={description}
 
     router.post('/', tasks.create) // thunder client post http://localhost:3000/tasks/ body idk.txt
 
     router.get('/', tasks.findAll)// http://localhost:3000/tasks/
 
-    router.post('/', categories.create) // thunder client post http://localhost:3000/categories/ body idk.txt
+    router.delete('/:id', tasks.delete);// thunder client delete http://localhost:3000/tasks/{id}
 
-    router.delete('/:id', categories.delete)// thunder client delete http://localhost:3000/categories/{id}
+    router.get('/:id', tasks.findById)// localhost:3000/tasks/{id}
+
 
     app.use('/tasks', router)
-    app.use('/categories', router)
 }

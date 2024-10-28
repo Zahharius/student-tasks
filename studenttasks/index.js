@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 })
 
 require('../studenttasks/routes/taskRoutes')(app);
+require('../studenttasks/routes/categoryRoutes')(app);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

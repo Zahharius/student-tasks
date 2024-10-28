@@ -1,4 +1,4 @@
-const { Task, User, Category } = require('../models');
+const { Task } = require('../models');
 const { Op } = require('sequelize');
 
 exports.create = (req, res) => {
@@ -46,32 +46,49 @@ exports.delete = (req, res) => {
         })
     })
 }
-exports.create = (req, res) => {
-    const category = {
-        category: req.body.category,
-    }
 
-    Category.create(category)
+exports.findById = (req, res) => {
+    const taskId = req.params.id;
+    Task.findOne({
+        where: {
+            id: taskId
+        }
+    })
     .then(data => {
-        res.send(data)
+        if (!data) {
+            return res.status(404).send({
+                message: `Task with id ${taskId} not found.`
+            });
+        }
+        res.send(data);
     })
     .catch(err => {
         res.status(500).send({
-            message: err.message || 'error while creating the Category.'
+            message: err.message || 'error while searching the Task.'
         })
     })
 }
-exports.delete = (req, res) => {
-    const categoryId = req.params.id
-    Category.destroy({
-        where: { id: categoryId }
+
+exports.search = (req, res) => {
+    const { description } = req.query;
+    Task.findAll({
+        where: {
+            description: {
+                [Op.like]: `%${description}%`
+            }
+        }
     })
     .then(data => {
-        res.send(data)
+        if (data.length === 0) {
+            return res.status(404).send({
+                message: `No tasks found with description: ${description}.`
+            })
+        }
+        res.send(data);
     })
     .catch(err => {
         res.status(500).send({
-            message: err.message || 'error while deleating the category.'
+            message: err.message || 'error while searching for tasks by description.'
         })
     })
 }
