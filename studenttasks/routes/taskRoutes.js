@@ -1,6 +1,9 @@
 module.exports = app => {
     const tasks = require('../controllers/taskController')
     const router = require('express').Router()
+    const authMiddleware = require('./middleware/auth');
+
+    app.get('/tasks', authMiddleware, (req, res) => {
 
     router.get('/search', tasks.search) // http://localhost:3000/tasks/search?description={description}
 
@@ -14,4 +17,5 @@ module.exports = app => {
 
 
     app.use('/tasks', router)
+});
 }
