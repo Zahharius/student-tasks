@@ -1,0 +1,18 @@
+{
+    "category": "ekskursioon"
+}
+
+{
+    "description": "Like a dragon 9: Unlimited Health",
+    "deadLine": "2029-03-03 00:00:00",
+    "createdTime": "2024-03-03 00:00:00",
+    "categoryId": 1
+}
+
+
+{
+  "email": "student@example.com",
+  "password": "strongpassword",
+  "userName": "StudentName",
+  "taskId": 1
+}
