@@ -16,5 +16,6 @@
 - bcryptjs
 
 ## Диаграмма базы данных
-![image](https://github.com/user-attachments/assets/ec3c3258-c99e-48e7-9e43-28a7883a41d3)
+![image](https://github.com/user-attachments/assets/33f2bf1f-4262-474e-9040-74b7417138f4)
+
 
